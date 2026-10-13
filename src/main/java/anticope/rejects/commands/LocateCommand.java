@@ -1,5 +1,6 @@
 package anticope.rejects.commands;
 
+import net.minecraft.client.multiplayer.ClientSuggestionProvider;
 import anticope.rejects.arguments.EnumArgumentType;
 import anticope.rejects.utils.WorldGenUtils;
 import anticope.rejects.utils.seeds.Seeds;
@@ -11,7 +12,6 @@ import com.seedfinding.mccore.version.MCVersion;
 import meteordevelopment.meteorclient.commands.Command;
 import meteordevelopment.meteorclient.utils.Utils;
 import meteordevelopment.meteorclient.utils.player.ChatUtils;
-import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -35,7 +35,7 @@ public class LocateCommand extends Command {
 	}
 
 	@Override
-	public void build(LiteralArgumentBuilder<SharedSuggestionProvider> builder) {
+	public void build(LiteralArgumentBuilder<ClientSuggestionProvider> builder) {
 		builder.then(literal("feature")
 				.then(argument("feature", EnumArgumentType.enumArgument(Cubiomes.StructureType.Village)).executes(ctx -> {
 					Cubiomes.StructureType feature = EnumArgumentType.getEnum(ctx, "feature", Cubiomes.StructureType.Village);

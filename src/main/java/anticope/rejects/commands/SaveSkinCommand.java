@@ -1,5 +1,6 @@
 package anticope.rejects.commands;
 
+import net.minecraft.client.multiplayer.ClientSuggestionProvider;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -9,7 +10,6 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import meteordevelopment.meteorclient.commands.Command;
 import meteordevelopment.meteorclient.commands.arguments.PlayerListEntryArgumentType;
 import meteordevelopment.meteorclient.utils.network.Http;
-import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import org.apache.commons.codec.binary.Base64;
 import org.lwjgl.BufferUtils;
@@ -42,7 +42,7 @@ public class SaveSkinCommand extends Command {
     }
 
     @Override
-    public void build(LiteralArgumentBuilder<SharedSuggestionProvider> builder) {
+    public void build(LiteralArgumentBuilder<ClientSuggestionProvider> builder) {
         builder.then(argument("player", PlayerListEntryArgumentType.create()).executes(ctx -> {
             UUID id = PlayerListEntryArgumentType.get(ctx).getProfile().id();
             String path = TinyFileDialogs.tinyfd_saveFileDialog("Save image", null, filters, null);
