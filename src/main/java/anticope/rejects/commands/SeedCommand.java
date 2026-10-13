@@ -1,5 +1,6 @@
 package anticope.rejects.commands;
 
+import net.minecraft.client.multiplayer.ClientSuggestionProvider;
 import anticope.rejects.arguments.EnumArgumentType;
 import anticope.rejects.utils.seeds.Seed;
 import anticope.rejects.utils.seeds.Seeds;
@@ -9,7 +10,6 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.seedfinding.mccore.version.MCVersion;
 import meteordevelopment.meteorclient.commands.Command;
 import meteordevelopment.meteorclient.utils.Utils;
-import net.minecraft.commands.SharedSuggestionProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 
@@ -21,7 +21,7 @@ public class SeedCommand extends Command {
     }
 
     @Override
-    public void build(LiteralArgumentBuilder<SharedSuggestionProvider> builder) {
+    public void build(LiteralArgumentBuilder<ClientSuggestionProvider> builder) {
         builder.executes(ctx -> {
             Seed seed = Seeds.get().getSeed();
             if (seed == null) throw NO_SEED.create();
